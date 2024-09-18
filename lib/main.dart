@@ -3,16 +3,13 @@ import 'package:existing_flutter_app/core/core_utils.dart';
 import 'package:existing_flutter_app/login_utils.dart';
 import 'package:existing_flutter_app/utils/shared_prefs_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:suspension_bridge/suspension_bridge.dart';
-import 'post_details_page.dart';
-import 'user_profile_page.dart';
-import 'logged_in_dashboard_page.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
+import 'screens/post_details_page.dart';
+import 'screens/user_profile_page.dart';
+import 'screens/logged_in_dashboard_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  usePathUrlStrategy();
 
   // Initialize the SharedPrefsUtil class before starting the app
   await SharedPrefsUtil.init();
@@ -109,7 +106,7 @@ class _HomePageState extends State<HomePage> {
       _onLoginChannelMethodCall,
     );
     // Init the login module pre-requisites
-    final _appState = await initLoginModule();
+    await initLoginModule();
 
     // Navigate to login module
     Navigator.of(
@@ -126,12 +123,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: const Text('Home Page'),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: launchLoginModule,
-          child: Text('Login to Continue'),
+          child: const Text('Login to Continue'),
         ),
       ),
     );

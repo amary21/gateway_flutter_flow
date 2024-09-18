@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -32,6 +33,13 @@ class _AuthPageWidgetState extends State<AuthPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => AuthPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.preventRootNavPopInterceptor(
+        context,
+      );
+    });
 
     _model.tabBarController = TabController(
       vsync: this,
