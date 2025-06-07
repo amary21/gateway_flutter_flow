@@ -34,10 +34,18 @@ dependencies:
 
   login_module_add_to_flutter:
     path: dependencies/login_module_add_to_flutter
+  deeplink_demo:
+    git:
+      url: https://github.com/taufikamaryansyah/ff-deeplink-demo.git
+      ref: flutterflow
+  k_k_workshop_t_a:
+    git:
+      url: https://github.com/taufikamaryansyah/ff-workshop.git
+      ref: flutterflow
   
   suspension_bridge: 0.0.1
   
-  shared_preferences: 2.2.2
+  shared_preferences: 2.3.2
 
 dev_dependencies:
   flutter_test:
