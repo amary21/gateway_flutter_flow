@@ -1,7 +1,9 @@
 import 'package:existing_flutter_app/core/core_constants.dart';
 import 'package:existing_flutter_app/core/core_utils.dart';
 import 'package:existing_flutter_app/login_utils.dart';
+import 'package:existing_flutter_app/utils/deeplink_utils.dart';
 import 'package:existing_flutter_app/utils/shared_prefs_utils.dart';
+import 'package:existing_flutter_app/workshop_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:suspension_bridge/suspension_bridge.dart';
 import 'screens/post_details_page.dart';
@@ -119,6 +121,30 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Future<void> launchCaturdayModule() async {
+    // Navigate to login module
+    Navigator.of(
+      context,
+      rootNavigator: true,
+    ).push(
+      MaterialPageRoute(
+        builder: (context) => kkWorkShoWidget,
+      ),
+    );
+  }
+
+  Future<void> launcDeeplinkModule() async {
+    // Navigate to login module
+    Navigator.of(
+      context,
+      rootNavigator: true,
+    ).push(
+      MaterialPageRoute(
+        builder: (context) => deeplinkDemoWidget,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,9 +152,21 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home Page'),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: launchLoginModule,
-          child: const Text('Login to Continue'),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: launchLoginModule,
+              child: const Text('Login to Continue'),
+            ),
+            ElevatedButton(
+              onPressed: launchCaturdayModule,
+              child: const Text('Caturday'),
+            ),
+            ElevatedButton(
+              onPressed: launcDeeplinkModule,
+              child: const Text('Deeplink Demo'),
+            ),
+          ],
         ),
       ),
     );

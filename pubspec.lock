@@ -2,7 +2,7 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   adjust_sdk:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: adjust_sdk
       sha256: "1f6ecfbc1cddd5ad41199c466c61db6bbaad250fbfe6ebdecb06a24a1cce1e15"
