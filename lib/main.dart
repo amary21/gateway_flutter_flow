@@ -5,6 +5,7 @@ import 'package:existing_flutter_app/utils/deeplink_utils.dart';
 import 'package:existing_flutter_app/utils/shared_prefs_utils.dart';
 import 'package:existing_flutter_app/workshop_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:suspension_bridge/suspension_bridge.dart';
 import 'screens/post_details_page.dart';
 import 'screens/user_profile_page.dart';
@@ -50,10 +51,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  static const MethodChannel _channel = MethodChannel('com.example.existing_flutter_app/intent_data');
   @override
   void initState() {
     super.initState();
     checkAuthState();
+
+    // Set up a method call handler to receive data from Android
+    _channel.setMethodCallHandler((MethodCall call) async {
+      if (call.method == "intentDataReceived") {
+        final String? url = call.arguments['url'];
+        print("Received deep link: $url");
+
+        SharedPrefsUtil().saveDeeplink(url ?? '');
+      }
+    });
   }
 
   Future<void> checkAuthState() async {
@@ -102,6 +114,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> launchLoginModule() async {
+    print("launchLoginModule");
     // Register method call handler to handle incoming triggers from login module
     SuspensionBridge().registerMethodCallHandler(
       CoreConstants.coreModuleChannelName,
@@ -123,6 +136,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> launchCaturdayModule() async {
     // Navigate to login module
+    print("launchLoginModule");
     Navigator.of(
       context,
       rootNavigator: true,
@@ -135,6 +149,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> launcDeeplinkModule() async {
     // Navigate to login module
+    print("launchLoginModule");
     Navigator.of(
       context,
       rootNavigator: true,

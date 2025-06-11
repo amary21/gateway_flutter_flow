@@ -32,6 +32,11 @@ class SharedPrefsUtil {
     _prefs.setString('authToken', authTokenJson);
   }
 
+  // Save deeplink to SharedPreferences
+  void saveDeeplink(String deeplink) {
+    _prefs.setString('deeplink', deeplink);
+  }
+
   // Get UserProfileModel from SharedPreferences
   UserProfileModel? getUserProfile() {
     String? userProfileJson = _prefs.getString('userProfile');

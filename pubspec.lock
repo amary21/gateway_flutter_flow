@@ -133,8 +133,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: flutterflow
-      resolved-ref: e203a5c63ea9892229a43d9e91a71cd7740f7f3e
+      ref: "1.0.1"
+      resolved-ref: "59093b74a975c6386e450e884b211028d771dbb3"
       url: "https://github.com/taufikamaryansyah/ff-deeplink-demo.git"
     source: git
     version: "1.0.0+1"

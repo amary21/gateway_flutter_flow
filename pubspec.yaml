@@ -37,7 +37,7 @@ dependencies:
   deeplink_demo:
     git:
       url: https://github.com/taufikamaryansyah/ff-deeplink-demo.git
-      ref: flutterflow
+      ref: 1.0.1
   k_k_workshop_t_a:
     git:
       url: https://github.com/taufikamaryansyah/ff-workshop.git
